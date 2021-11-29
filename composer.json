@@ -1,0 +1,9 @@
+{
+    "name": "nicolas.mugnier/autowire",
+    "autoload": {
+        "psr-4": {
+            "NicolasMugnier\\Autowire\\": "src/"
+        }
+    },
+    "require": {}
+}
