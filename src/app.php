@@ -2,7 +2,14 @@
 
 require_once(__DIR__.'/../vendor/autoload.php');
 
-use NicolasMugnier\Autowire\Client;
-use NicolasMugnier\Autowire\Domain;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
-echo (new Domain(new Client()))->doSomething();
+$containerBuilder = new ContainerBuilder();
+$containerBuilder->register('client', 'NicolasMugnier\Autowire\Client');
+$containerBuilder
+    ->register('domain', 'NicolasMugnier\Autowire\Domain')
+    ->addArgument(new Reference('client'));
+
+
+echo $containerBuilder->get('domain')->doSomething();
