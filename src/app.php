@@ -9,5 +9,6 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 $containerBuilder = new ContainerBuilder();
 $loader = new XmlFileLoader($containerBuilder, new FileLocator(__DIR__));
 $loader->load('services.xml');
+$containerBuilder->compile();
 
-echo $containerBuilder->get('domain')->doSomething();
+echo $containerBuilder->get(NicolasMugnier\Autowire\Domain::class)->doSomething();
