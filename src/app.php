@@ -2,14 +2,12 @@
 
 require_once(__DIR__.'/../vendor/autoload.php');
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 $containerBuilder = new ContainerBuilder();
-$containerBuilder->register('client', 'NicolasMugnier\Autowire\Client');
-$containerBuilder
-    ->register('domain', 'NicolasMugnier\Autowire\Domain')
-    ->addArgument(new Reference('client'));
-
+$loader = new XmlFileLoader($containerBuilder, new FileLocator(__DIR__));
+$loader->load('services.xml');
 
 echo $containerBuilder->get('domain')->doSomething();
