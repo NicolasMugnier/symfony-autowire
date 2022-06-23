@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    bind:
+      NicolasMugnier\Autowire\ClientInterface $client: '@NicolasMugnier\Autowire\Client'
+    
+  NicolasMugnier\Autowire\Domain:
+    public: true
+
+  NicolasMugnier\Autowire\Client: ~
+
