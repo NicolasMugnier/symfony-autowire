@@ -9,4 +9,3 @@ services:
     public: true
 
   NicolasMugnier\Autowire\Client: ~
-
